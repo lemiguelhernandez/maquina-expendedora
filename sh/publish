@@ -12,5 +12,5 @@ cp -rf dist/* docs/
 
 echo "git push"
 git add .
-git commit -m "automatizacion de publicación"
+git commit -m "automatización de publicación"
 git push
