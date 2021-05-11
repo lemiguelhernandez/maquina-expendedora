@@ -4,6 +4,7 @@ import { SharedLibsModule } from './shared/shared-libs.module';
 import { AppComponent } from './app.component';
 import { VendingMachineModule } from './modules/vending-machine/vending-machine.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AutomatonModule } from './modules/automaton/automaton.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     SharedLibsModule,
     HttpClientModule,
-    VendingMachineModule
+    VendingMachineModule,
+    AutomatonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
