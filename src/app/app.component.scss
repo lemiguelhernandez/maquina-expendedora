@@ -1,0 +1,9 @@
+.app-container {
+    display: flex;
+    .vending-machine-wrapper {
+        flex: 1;
+    }
+    .automaton-wrapper {
+        flex: 1;
+    }
+}

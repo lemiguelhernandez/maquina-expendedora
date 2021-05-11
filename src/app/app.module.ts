@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedLibsModule } from './shared/shared-libs.module';
 import { AppComponent } from './app.component';
+import { VendingMachineModule } from './modules/vending-machine/vending-machine.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -9,7 +11,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    SharedLibsModule
+    SharedLibsModule,
+    HttpClientModule,
+    VendingMachineModule
   ],
   providers: [],
   bootstrap: [AppComponent]

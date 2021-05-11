@@ -1,0 +1,28 @@
+<div class="vending-machine">
+    <div class="col">
+        <div class="products-container">
+            <div *ngFor="let row of renderProducts; let last = last">
+                <div class="row">
+                    <div class="col" *ngFor="let product of row">
+                        <app-product [value]="product"></app-product>
+                    </div>
+                </div>
+                <div *ngIf="!last" class="separator-vertical"></div>
+            </div>
+        </div>
+        <div class="options-container">
+    
+        </div>
+    </div>
+    <!-- <div class="take-product">
+
+    </div> -->
+</div>
+<div class="footer">
+    <div class="support-wrapper left">
+        <div class="support"></div>
+    </div>
+    <div class="support-wrapper">
+        <div class="support right"></div>
+    </div>
+</div>

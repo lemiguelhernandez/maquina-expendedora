@@ -1,0 +1,50 @@
+[
+    {
+        "img": "CHETOS-BOLIQUESO.png",
+        "price": 1500
+    },
+    {
+        "img": "papita_risada_azul.png",
+        "price": 1500
+    },
+    {
+        "img": "papita_risada_negra.png",
+        "price": 1500
+    },
+    {
+        "img": "papita_risada_verde.png",
+        "price": 1500
+    },
+    {
+        "img": "papitas_risadas.png",
+        "price": 1500
+    },
+    {
+        "img": "hot-cheetos.png",
+        "price": 1500
+    },
+    {
+        "img": "cerbeza_corona.png",
+        "price": 3000
+    },
+    {
+        "img": "Cerveza-Clubcolombia-roja-lata.png.png",
+        "price": 2500
+    },
+    {
+        "img": "gaseosa_lata.png",
+        "price": 2000
+    },
+    {
+        "img": "heineken.png",
+        "price": 3500
+    },
+    {
+        "img": "gaseosa_pepsi.png",
+        "price": 2000
+    },
+    {
+        "img": "postobon-lata-colombiana.png",
+        "price": 2000
+    }
+]

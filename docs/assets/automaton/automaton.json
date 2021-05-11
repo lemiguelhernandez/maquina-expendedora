@@ -1,0 +1,45 @@
+{
+    "state": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+    ],
+    "initialState": "A",
+    "finalStates": [
+        "E"
+    ],
+    "transitions": [
+        {
+            "from": "A",
+            "to": "B",
+            "symbol": "IM"
+        },
+        {
+            "from": "B",
+            "to": "B",
+            "symbol": "IM"
+        },
+        {
+            "from": "B",
+            "to": "C",
+            "symbol": "FIN"
+        },
+        {
+            "from": "C",
+            "to": "B",
+            "symbol": "NV"
+        },
+        {
+            "from": "C",
+            "to": "D",
+            "symbol": "SV"
+        },
+        {
+            "from": "D",
+            "to": "E",
+            "symbol": "EP"
+        }
+    ]
+}
