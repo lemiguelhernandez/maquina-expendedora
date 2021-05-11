@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   fetch(): Observable<HttpResponse<Product[]>> {
-    return this.http.get<Product[]>('/assets/products/products.json', { observe: 'response' });
+    return this.http.get<Product[]>('assets/products/products.json', { observe: 'response' });
   }
 
 }
