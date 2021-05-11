@@ -1,10 +1,10 @@
-<div>
+<div class="product" (click)="onSelect()">
     <div class="img-wrapper">
         <img [src]="'assets/products/images/' + value.img"/>
     </div>
     <div class="price-wrapper">
         <span>
-            {{value.price}}
+            {{value.price | number}}
         </span>
     </div>
 </div>

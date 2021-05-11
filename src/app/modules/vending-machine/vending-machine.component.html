@@ -4,14 +4,40 @@
             <div *ngFor="let row of renderProducts; let last = last">
                 <div class="row">
                     <div class="col" *ngFor="let product of row">
-                        <app-product [value]="product"></app-product>
+                        <app-product [value]="product" (select)="onSelectProduct($event)"></app-product>
                     </div>
                 </div>
                 <div *ngIf="!last" class="separator-vertical"></div>
             </div>
         </div>
         <div class="options-container">
-    
+            <div class="info-container">
+                <div class="display-container">
+                    <span class="title_display">Total a pagar</span>
+                    <div class="display-wrapper">
+                        <div class="display-info">
+                            {{totalPay | number}}
+                        </div>
+                    </div>
+                    <span class="title_display">Saldo disponible</span>
+                    <div class="display-wrapper">
+                        <div class="display-info">
+                            {{totalInputMoney | number}}
+                        </div>
+                    </div>
+                </div>
+                <div class="count-option">
+                    <button (click)="onCountOption(2)" [disabled]="!lastProduct">2</button>
+                    <button (click)="onCountOption(3)" [disabled]="!lastProduct">3</button>
+                    <button (click)="reset()" [disabled]="!totalPay">Reiniciar</button>
+                </div>
+                <div class="input-money">
+                    <img src="assets/images/input-money.png" alt="" srcset="">
+                </div>
+            </div>
+            <div class="button-wrapper">
+                <button>FIN</button>
+            </div>
         </div>
     </div>
     <!-- <div class="take-product">

@@ -3,7 +3,7 @@ $border-size: 5px;
 .vending-machine {
     border: $border-size solid #D14E22;
     border-radius: 10px;
-    height: 40vw;
+    min-height: max-content;
     width: 100%;
     padding: 20px;
     background-color: #FF8458;
@@ -27,7 +27,68 @@ $border-size: 5px;
             }
         }
         .options-container {
-            width: 200px;
+            width: 10vw;
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            .info-container {
+                border: $border-size solid #902E05;
+                border-radius: 10px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                background-color: #F5E5B9;
+                .display-container {
+                    flex: 1;
+                    margin-top: 20px;
+                    .title_display {
+                        font-size: 0.7vw;
+                        margin: 0px 5px;
+                        font-weight: bold;
+                    }
+                    .display-wrapper {
+                        border: 1px solid #3B3B3B;
+                        background-color: #575757;
+                        text-align: center;
+                        padding: 5px 0px;
+                        margin: 5px 5px;
+                        .display-info {
+                            color: #26FF26;
+                        }
+                    }
+                }
+                .count-option {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    button {
+                        margin: 5px 5px;
+                        cursor: pointer;
+                    }
+                }
+                .input-money {
+                    text-align: center;
+                    margin-bottom: 10px;
+                    img {
+                        height: 5vw;
+                        width: 5vw;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .button-wrapper {
+                margin-top: 10px;
+                text-align: center;
+                button {
+                    width: 100%;
+                    border: $border-size solid #C9B9AB;
+                    border-radius: 10px;
+                    padding: 15px 35px;
+                    font-weight: bold;
+                    font-size: 15px;
+                    cursor: pointer;
+                }
+            }
         }
     }
     .take-product {

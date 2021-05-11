@@ -11,7 +11,11 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 export class VendingMachineComponent implements OnInit {
 
   MAX_COLUMNS = 3;
+  MAX_VALUE_TO_PAY = 5000;
   renderProducts: any[] = [];
+  totalPay = 0;
+  totalInputMoney = 0;
+  lastProduct: Product;
 
   constructor(private productService: ProductService) { }
 
@@ -40,5 +44,27 @@ export class VendingMachineComponent implements OnInit {
 
   onError(error: string) {
     alert(error);
+  }
+
+
+  onCountOption(count: number) {
+    this.onSelectProduct(this.lastProduct, count - 1);
+    this.lastProduct = null;
+  }
+
+  onSelectProduct(product: Product, count = 1) {
+    this.lastProduct = product;
+    const total = this.totalPay + (product.price * count);
+    if (total > this.MAX_VALUE_TO_PAY) {
+      alert(`¡${total} sobrepasa el valor máximo permitido ${this.MAX_VALUE_TO_PAY}!`)
+      return;
+    }
+
+    this.totalPay = total;
+  }
+
+  reset() {
+    this.lastProduct = null;
+    this.totalInputMoney = this.totalPay = 0;
   }
 }
