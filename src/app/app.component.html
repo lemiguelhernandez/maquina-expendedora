@@ -1,8 +1,16 @@
 <div class="app-container">
   <div class="vending-machine-wrapper">
-     <app-vending-machine></app-vending-machine>
+     <app-vending-machine [automatonRunner]="automatonRunner"></app-vending-machine>
   </div>
   <div class="automaton-wrapper">
-    <app-automaton></app-automaton>
+    <app-automaton [automatonRunner]="automatonRunner"></app-automaton>
+    <br/>
+    <div class="member-container">
+      <h2 style="font-weight: bold">Integrantes:</h2>
+      <li><h4 class="member">RICARDO BARBOSA RODRIGUEZ</h4></li>
+      <li><h4 class="member">LUIS MIGUEL HERNÁNDEZ PÉREZ</h4></li>
+      <li><h4 class="member">CRISTIAN ESTUPIÑAN MIRANDA</h4></li>
+      <li><h4 class="member">CLEIDER RICARDO BARBOZA</h4></li>
+    </div>
   </div>
 </div>

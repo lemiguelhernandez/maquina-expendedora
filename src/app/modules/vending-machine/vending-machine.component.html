@@ -1,3 +1,14 @@
+<p-overlayPanel #op [dismissable]="true" [showCloseIcon]="true">
+    <ng-template pTemplate>
+        <div>
+            <img class="money" src="assets/images/100.png" alt="" (click)="addAvailableBalance(100)">
+            <img class="money" src="assets/images/200.png" alt="" (click)="addAvailableBalance(200)">
+            <img class="money" src="assets/images/500.png" alt="" (click)="addAvailableBalance(500)">
+            <img class="money" src="assets/images/1000.png" alt="" (click)="addAvailableBalance(1000)">
+        </div>
+    </ng-template>
+</p-overlayPanel>
+
 <div class="vending-machine">
     <div class="col">
         <div class="products-container">
@@ -29,14 +40,14 @@
                 <div class="count-option">
                     <button (click)="onCountOption(2)" [disabled]="!lastProduct">2</button>
                     <button (click)="onCountOption(3)" [disabled]="!lastProduct">3</button>
-                    <button (click)="reset()" [disabled]="!totalPay">Reiniciar</button>
+                    <button (click)="reset()" [disabled]="!totalPay && !totalInputMoney && !isFinish">Reiniciar</button>
                 </div>
                 <div class="input-money">
-                    <img src="assets/images/input-money.png" alt="" srcset="">
+                    <img src="assets/images/input-money.png" alt="" (click)="op.toggle($event)">
                 </div>
             </div>
             <div class="button-wrapper">
-                <button>FIN</button>
+                <button (click)="onFinish()" [disabled]="!totalInputMoney">FIN</button>
             </div>
         </div>
     </div>

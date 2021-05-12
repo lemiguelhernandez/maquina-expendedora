@@ -1,36 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { AutomatonService } from './automaton.service';
-import { Automaton } from 'src/app/model/automaton.model';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { AutomatonRunner } from 'src/app/runner/automaton.runner';
+import { EventRunner, TypeEvent } from 'src/app/runner/event.model';
+import { Subscription } from 'rxjs';
+import { Transitions } from 'src/app/model/transitions.model';
 
 @Component({
   selector: 'app-automaton',
   templateUrl: './automaton.component.html',
   styleUrls: ['./automaton.component.scss']
 })
-export class AutomatonComponent implements OnInit {
+export class AutomatonComponent implements OnInit, OnDestroy {
+
+  @Input()
+  automatonRunner: AutomatonRunner;
+
+  subscription: Subscription;
 
   state: string;
-  automaton: Automaton;
+  lastState: string;
+  lastTransition: Transitions;
 
-  constructor(private automatonService: AutomatonService) { }
-
+  constructor() { }
+  
   ngOnInit(): void {
-    this.automatonService.get()
-      .subscribe(
-        (res: HttpResponse<Automaton>) => {
-          this.automaton = res.body;
-          this.setState(this.automaton.initialState);
-        },
-        (res: HttpErrorResponse) => this.onError(res.message));
+    this.subscription = this.automatonRunner.subscribe((response: EventRunner) => {
+      switch(response.type) {
+        case TypeEvent.INIT:
+          this.lastTransition = {
+            from: response.automaton.initialState,
+            to: null,
+            symbol: null
+          }
+          this.setState(response.automaton.initialState);
+        break;
+        case TypeEvent.CHANGE_STATE:
+           const transition: Transitions = response.value;
+           if (this.lastTransition.to !== transition.to || this.lastTransition.from !== transition.from) {
+              const newState = this.lastState + transition.symbol.toLowerCase() + transition.to;
+              this.setState(newState);
+              this.lastTransition = transition;
+           }
+        break;
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   setState(state: string) {
     this.state = `af_${state}.png`;
+    this.lastState = state;
   }
-
-  onError(error: string) {
-    alert(error);
-  }
-
 }

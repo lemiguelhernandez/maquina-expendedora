@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/md-dark-indigo/theme.css';
+@import '~primeng/resources/primeng.min.css';
+
+@font-face {
+    font-family: 'Lato';
+    src: url('assets/fonts/Lato-Regular.ttf') format('opentype');
+}
+
+body, .p-component {
+    font-family: Lato, serif !important;
+}
+
+.p-overlaypanel {
+    background: #fff;
+}
+
+button {
+    border-radius: revert !important;
+}

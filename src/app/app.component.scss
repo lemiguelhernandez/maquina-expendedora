@@ -7,4 +7,13 @@
         flex: 2;
         margin-left: 100px;
     }
+    .member-container {
+        li {
+            margin-left: 20px;
+        }
+    }
+    .member {
+        display: inline; 
+        font-weight: normal;
+    }
 }

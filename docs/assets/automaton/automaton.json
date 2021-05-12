@@ -18,13 +18,13 @@
         },
         {
             "from": "B",
-            "to": "B",
-            "symbol": "IM"
+            "to": "C",
+            "symbol": "FIN"
         },
         {
             "from": "B",
-            "to": "C",
-            "symbol": "FIN"
+            "to": "B",
+            "symbol": "IM"
         },
         {
             "from": "C",
