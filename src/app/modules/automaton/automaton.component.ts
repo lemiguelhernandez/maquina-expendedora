@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { AutomatonRunner } from 'src/app/runner/automaton.runner';
 import { EventRunner, TypeEvent } from 'src/app/runner/event.model';
 import { Subscription } from 'rxjs';
-import { Transitions } from 'src/app/model/transitions.model';
+import { Transition } from 'src/app/model/transition.model';
 
 @Component({
   selector: 'app-automaton',
@@ -18,7 +18,7 @@ export class AutomatonComponent implements OnInit, OnDestroy {
 
   state: string;
   lastState: string;
-  lastTransition: Transitions;
+  lastTransition: Transition;
 
   constructor() { }
   
@@ -34,7 +34,7 @@ export class AutomatonComponent implements OnInit, OnDestroy {
           this.setState(response.automaton.initialState);
         break;
         case TypeEvent.CHANGE_STATE:
-           const transition: Transitions = response.value;
+           const transition: Transition = response.value;
            if (this.lastTransition.to !== transition.to || this.lastTransition.from !== transition.from) {
               const newState = this.lastState + transition.symbol.toLowerCase() + transition.to;
               this.setState(newState);

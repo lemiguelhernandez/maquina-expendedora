@@ -70,7 +70,7 @@ export class VendingMachineComponent implements OnInit, ValidatorRunner {
 
   onFinish() {
     this.isFinish = true;
-    this.automatonRunner.run();
+    this.automatonRunner.next();
   }
 
   addAvailableBalance(coin: number) {
@@ -80,7 +80,7 @@ export class VendingMachineComponent implements OnInit, ValidatorRunner {
       return;
     }
     this.totalInputMoney = newTotalInputMoney;
-    this.automatonRunner.run();
+    this.automatonRunner.next();
   }
 
   reset() {
@@ -98,7 +98,9 @@ export class VendingMachineComponent implements OnInit, ValidatorRunner {
         const apply = this.totalInputMoney != this.totalPay;
         if (apply) {
           this.automatonRunner.resetNext = true;
-          alert(`Falta dinero ${this.totalPay - this.totalInputMoney}`);
+          setTimeout(() => {
+            alert(`Falta dinero ${this.totalPay - this.totalInputMoney}`);
+         }, 600);
         }
         return apply;
       case 'SV':
@@ -110,15 +112,6 @@ export class VendingMachineComponent implements OnInit, ValidatorRunner {
       case 'IM':
         this.isFinish = false;
         return this.totalInputMoney > 0;
-    }
-    return false;
-  }
-
-  canContinue(symbol: string) {
-    switch(symbol) {
-      case 'SV': 
-      case 'FIN': 
-        return true;
     }
     return false;
   }

@@ -1,11 +1,10 @@
 import { Automaton } from '../model/automaton.model';
 import { Subject } from "rxjs";
 import { SimpleEvent, TypeEvent } from './event.model';
-import { Transitions } from '../model/transitions.model';
+import { Transition, TypeNext } from '../model/transition.model';
 
 export interface ValidatorRunner {
-    meets: (symbol: string) => boolean,
-    canContinue: (symbol: string) => boolean
+    meets: (symbol: string) => boolean
 }
 
 export class AutomatonRunner {
@@ -31,11 +30,11 @@ export class AutomatonRunner {
         return this.subject.subscribe(next);
     }
 
-    getNextTransations(): Transitions[] {
+    getNextTransations(): Transition[] {
         return this.automaton.transitions.filter(it => it.from === this.currentState);
     }
 
-    run() {
+    next() {
         if (this.resetNext) {
             this.reset();
         }
@@ -44,10 +43,12 @@ export class AutomatonRunner {
            if (this.validator.meets(transition.symbol)) {
             this.currentState = transition.to;
             this.subject.next(new SimpleEvent(TypeEvent.CHANGE_STATE, this.automaton, transition));
-             if (this.validator.canContinue(transition.symbol)) {
-                 this.run();
-             }
-             break;
+            if (String(TypeNext.AUTO) === String(transition.next)) {
+                 setTimeout(() => {
+                    this.next();
+                 }, 500);
+            }
+            break;
            }
         }
     }

@@ -1,8 +1,8 @@
-import { Transitions } from './transitions.model';
+import { Transition } from './transition.model';
 
 export interface Automaton {
-    state: string[],
+    states: string[],
     initialState: string,
     finalStates: string[],
-    transitions: Transitions[]
+    transitions: Transition[]
 }

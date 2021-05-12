@@ -1,5 +1,5 @@
 {
-    "state": [
+    "states": [
         "A",
         "B",
         "C",
@@ -19,7 +19,8 @@
         {
             "from": "B",
             "to": "C",
-            "symbol": "FIN"
+            "symbol": "FIN",
+            "next": "AUTO"
         },
         {
             "from": "B",
@@ -34,7 +35,8 @@
         {
             "from": "C",
             "to": "D",
-            "symbol": "SV"
+            "symbol": "SV",
+            "next": "AUTO"
         },
         {
             "from": "D",
